@@ -36,7 +36,6 @@ export default function AboutPage({ socials }) {
             <img src="/images/me.png" alt="Nik Nizmal Naem" />
           </div>
           <div className="profile-identity">
-            <p className="profile-status">Available</p>
             <h2>Nik Nizmal Naem</h2>
             <p>Computer Science graduate building AI/ML, vision, and practical software systems.</p>
           </div>
@@ -45,6 +44,7 @@ export default function AboutPage({ socials }) {
             <div><dt>Base</dt><dd>Kuala Lumpur</dd></div>
             <div><dt>Main stack</dt><dd>Python, React, ML</dd></div>
             <div><dt>Focus</dt><dd>AI, CV, backend</dd></div>
+            <div><dt>Status</dt><dd className='profile-status'>Available</dd></div>
           </dl>
 
           <div className="profile-actions">

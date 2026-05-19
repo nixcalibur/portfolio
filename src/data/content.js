@@ -244,7 +244,6 @@ export const posts = [
 export const socials = [
   { label: 'GitHub', href: 'https://github.com/nixcalibur', icon: 'github' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nik-nizmal-naem-873b10198/', icon: 'linkedin' },
-  { label: 'Facebook', href: 'https://facebook.com/niknizmalnaem', icon: 'facebook' },
   { label: 'Instagram', href: 'https://instagram.com/nixcalibastard', icon: 'instagram' },
   { label: 'Email', href: 'mailto:niknizmal@yahoo.com', icon: 'email' },
 ];

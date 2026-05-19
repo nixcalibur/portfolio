@@ -152,14 +152,12 @@ button.pixel-button {
 }
 
 .profile-status {
-  width: auto !important;
-  display: inline-flex;
-  margin: 0 0 0.55rem !important;
-  border: 1px solid rgba(139, 187, 255, 0.38);
-  color: var(--accent) !important;
-  padding: 0.16rem 0.45rem;
+  border: 1px solid green !important;
+  color: white !important;
+  padding: 0.25rem 0.5rem !important;
   font-size: 0.72rem !important;
   line-height: 1.2 !important;
+  background-color: rgba(0, 128, 0, 0.6) !important;
 }
 
 .profile-facts {
