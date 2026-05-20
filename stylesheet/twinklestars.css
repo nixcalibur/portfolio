@@ -67,6 +67,19 @@
     -o-animation: move-background 70s linear infinite;
   }
 
+@media (max-width: 800px) {
+  .twinkling {
+    width: 100%;
+    opacity: 0.35;
+    animation: none;
+    -webkit-animation: none;
+    -moz-animation: none;
+    -ms-animation: none;
+    -o-animation: none;
+    transform: none;
+  }
+}
+
 @font-face {
   font-family: MyFont;
   src: url('../fonts/MinecraftRegular.otf');

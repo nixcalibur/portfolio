@@ -13,7 +13,7 @@ export default function BlogPage({ posts, setActivePost }) {
     <main className="blog-page">
       <section className="blog-index" aria-labelledby="blog-title">
         <div className="blog-heading">
-          <p className="eyebrow">shitloreposting</p>
+          <h1>shitloreposting</h1>
           <p>Engineering notes, project logs, and occasional structured nonsense.</p>
         </div>
 

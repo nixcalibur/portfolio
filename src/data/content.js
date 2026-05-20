@@ -224,7 +224,7 @@ export const posts = [
       {
         type: 'image',
         src: '/images/img.jpeg',
-        alt: 'ORION project screenshot',
+        alt: 'test image',
         caption: 'test image caption',
       },
       {

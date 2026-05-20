@@ -275,6 +275,7 @@ h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.35s ease;
 }
 
 .project-body {
@@ -326,11 +327,14 @@ h6 {
   font-weight: 900;
   text-decoration: none;
   backdrop-filter: blur(10px);
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
 }
 
 .project-link:hover,
 .project-link:focus-visible {
   background: rgba(138, 187, 255, 0.3);
+  border-color: rgba(180, 220, 255, 0.5);
+  transform: translateY(-1px);
   outline: none;
 }
 
@@ -403,6 +407,7 @@ h6 {
   border: 1px solid var(--glass-border);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.9);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
 .timeline-dot.size-large {
@@ -427,6 +432,7 @@ h6 {
   background: rgba(17, 29, 42, 0.62);
   padding: 1.3rem;
   backdrop-filter: blur(12px) saturate(120%);
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
 }
 
 .timeline-card p {
@@ -446,6 +452,7 @@ h6 {
   color: #7d8997;
   font-style: italic;
   text-align: center;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .skill-cloud {
@@ -467,6 +474,38 @@ h6 {
   padding: 0.65rem 0.85rem;
   font-weight: 900;
   backdrop-filter: blur(8px);
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover .project-media img {
+    transform: scale(1.035);
+  }
+
+  .timeline-entry:hover .timeline-dot {
+    transform: scale(1.08);
+    border-color: rgba(139, 187, 255, 0.7);
+    box-shadow: 0 0 0 6px rgba(139, 187, 255, 0.12);
+  }
+
+  .timeline-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(180, 220, 255, 0.45);
+    background: rgba(20, 36, 52, 0.74);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+  }
+
+  .future-awaits:hover {
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .skill-cloud span:hover {
+    transform: translateY(-2px);
+    border-color: rgba(180, 220, 255, 0.55);
+    background: rgba(139, 187, 255, 0.18);
+    color: #ffffff;
+  }
 }
 
 .footer {
