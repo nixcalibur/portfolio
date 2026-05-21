@@ -17,6 +17,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      VITE_SANITY_PROJECT_ID: djbu8m0k
+      VITE_SANITY_DATASET: production
+      VITE_SANITY_API_VERSION: 2026-05-21
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -25,10 +29,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-        env:
-          VITE_SANITY_PROJECT_ID: ${{ vars.VITE_SANITY_PROJECT_ID }}
-          VITE_SANITY_DATASET: ${{ vars.VITE_SANITY_DATASET }}
-          VITE_SANITY_API_VERSION: ${{ vars.VITE_SANITY_API_VERSION }}
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
