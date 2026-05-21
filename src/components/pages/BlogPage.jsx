@@ -1,9 +1,9 @@
 function BlogPostRow({ post, setActivePost }) {
   return (
     <button className="blog-row" type="button" onClick={() => setActivePost(post)}>
-      <span className="blog-date">{post.date}</span>
+      <span className="blog-date">{post.date || 'Draft'}</span>
       <span className="blog-title">{post.title}</span>
-      <span className="blog-summary">{post.summary}</span>
+      <span className="blog-summary">{post.summary || 'No summary yet.'}</span>
     </button>
   );
 }
@@ -18,7 +18,11 @@ export default function BlogPage({ posts, setActivePost }) {
         </div>
 
         <div className="blog-list">
-          {posts.map((post) => <BlogPostRow key={post.slug} post={post} setActivePost={setActivePost} />)}
+          {posts.length > 0 ? (
+            posts.map((post) => <BlogPostRow key={post.slug} post={post} setActivePost={setActivePost} />)
+          ) : (
+            <p className="blog-empty">No posts found.</p>
+          )}
         </div>
       </section>
     </main>

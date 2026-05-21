@@ -62,7 +62,7 @@ button.pixel-button {
 
 .about-page {
   min-height: 100vh;
-  padding: clamp(5.5rem, 9vh, 7.5rem) var(--page-gutter) clamp(3rem, 7vh, 5rem);
+  padding: clamp(5.75rem, 9vh, 7.5rem) var(--page-gutter) clamp(3rem, 7vh, 5rem);
 }
 
 .about-layout {
@@ -72,7 +72,7 @@ button.pixel-button {
   gap: clamp(2rem, 6vw, 5rem);
   width: min(var(--page-max), 100%);
   margin: 0 auto;
-  min-height: calc(100vh - clamp(8.5rem, 16vh, 12.5rem));
+  min-height: calc(100vh - clamp(8.75rem, 16vh, 12.5rem));
 }
 
 .about-copy h1 {
@@ -314,29 +314,18 @@ button.pixel-button {
 .blog-page {
   min-height: 100vh;
   padding-top: 3rem;
-  font-family: "Times New Roman", Times, serif;
-}
-
-.blog-page p,
-.blog-page li,
-.blog-page h1,
-.blog-page h2,
-.blog-page h3,
-.blog-page button,
-.blog-page code {
-  font-family: "Times New Roman", Times, serif;
 }
 
 .blog-index {
   width: min(960px, calc(100% - 2rem));
   margin-inline: auto;
-  padding: 4rem;
+  padding: clamp(3rem, 8vw, 5.5rem) 0 4rem;
   text-align: center;
 }
 
 .blog-heading {
-  width: min(100%, 760px);
-  margin: 0 auto 2rem;
+  width: min(100%, 820px);
+  margin: 0 auto 2.5rem;
   text-align: center;
 }
 
@@ -364,30 +353,38 @@ button.pixel-button {
 
 .blog-list {
   display: grid;
+  gap: 0.75rem;
   justify-items: center;
-  border-top: 1px solid var(--line);
+}
+
+.blog-empty {
+  margin: 1rem 0 0;
+  color: var(--muted);
 }
 
 .blog-row {
   display: grid;
-  grid-template-columns: 120px minmax(180px, 0.7fr) minmax(0, 1.3fr);
-  gap: 1rem;
-  align-items: baseline;
-  width: min(100%, 760px);
-  padding: 1rem 0;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  background: transparent;
+  grid-template-columns: 118px minmax(180px, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  align-items: center;
+  width: min(100%, 820px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(10, 22, 36, 0.52);
   color: inherit;
   cursor: pointer;
   font: inherit;
+  padding: 1rem 1.1rem;
   text-decoration: none;
-  text-align: center;
+  text-align: left;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
 .blog-row:hover,
 .blog-row:focus-visible {
-  color: var(--accent);
+  transform: translateY(-2px);
+  border-color: rgba(139, 187, 255, 0.35);
+  background: rgba(14, 31, 50, 0.72);
   outline: none;
 }
 
@@ -399,11 +396,34 @@ button.pixel-button {
 
 .blog-title {
   color: var(--text);
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+.blog-row:hover .blog-title,
+.blog-row:focus-visible .blog-title {
+  color: var(--accent);
 }
 
 .article-page {
   width: min(960px, calc(100% - 2rem));
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 14px;
+  background: rgba(10, 22, 36, 0.88);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+  padding: clamp(1.25rem, 4vw, 3rem);
+  font-family: "Times New Roman", Times, serif;
   text-align: justify;
+}
+
+.article-page p,
+.article-page li,
+.article-page h1,
+.article-page h2,
+.article-page h3,
+.article-page button,
+.article-page code {
+  font-family: "Times New Roman", Times, serif;
 }
 
 .article-back {
@@ -422,7 +442,7 @@ button.pixel-button {
 }
 
 .article-header {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .article-header h1 {
@@ -433,17 +453,17 @@ button.pixel-button {
 
 .article-header p:not(.eyebrow) {
   width: min(800px, 100%);
-  color: var(--muted);
+  color: #bac7d6;
   line-height: 1.7;
 }
 
 .article-content {
   margin-top: 2rem;
   display: grid;
-  gap: 0.5rem;
-  color: #ffffff;
+  gap: 0.7rem;
+  color: #e8eef6;
   font-size: 1.4rem;
-  line-height: 1.5;
+  line-height: 1.58;
   text-align: justify;
 }
 
@@ -460,11 +480,13 @@ button.pixel-button {
 }
 
 .article-content p,
-.article-content ul {
+.article-content ul,
+.article-content ol {
   margin: 0;
 }
 
-.article-content ul {
+.article-content ul,
+.article-content ol {
   padding-left: 1.2rem;
 }
 
@@ -472,7 +494,7 @@ button.pixel-button {
   margin: 0;
   border-left: 3px solid var(--accent);
   padding-left: 1rem;
-  color: var(--text);
+  color: #f1f6fb;
   font-style: italic;
   transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
@@ -480,9 +502,9 @@ button.pixel-button {
 .article-content pre {
   overflow-x: auto;
   margin: 0;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(139, 187, 255, 0.2);
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.26);
+  background: rgba(4, 10, 18, 0.72);
   padding: 1rem;
   color: #e9f3ff;
   line-height: 1.6;
@@ -496,15 +518,15 @@ button.pixel-button {
 .article-content hr {
   width: 100%;
   border: 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   margin: 0.4rem 0;
 }
 
 .article-placeholder {
   border: 1px dashed rgba(139, 187, 255, 0.35);
   border-radius: 8px;
-  background: rgba(139, 187, 255, 0.08);
-  color: var(--muted) !important;
+  background: rgba(139, 187, 255, 0.1);
+  color: #bac7d6 !important;
   padding: 0.85rem 1rem;
 }
 
@@ -516,9 +538,9 @@ button.pixel-button {
   width: 100%;
   max-width: 100%;
   height: auto;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(139, 187, 255, 0.2);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(4, 10, 18, 0.5);
   transition: border-color 0.22s ease, transform 0.22s ease;
 }
 
@@ -557,11 +579,16 @@ button.pixel-button {
   }
 
   .about-page {
-    padding: 7.5rem 1rem 3rem;
+    padding: 7.25rem 1rem 3rem;
   }
 
   .about-copy h1 {
-    font-size: clamp(2.7rem, 11vw, 4rem);
+    font-size: clamp(2.6rem, 11vw, 4rem);
+  }
+
+  .about-copy p {
+    font-size: 0.98rem;
+    line-height: 1.7;
   }
 
   .about-copy p,
@@ -643,10 +670,12 @@ button.pixel-button {
 
   .article-page {
     width: min(100% - 1.25rem, 860px);
+    padding: 1rem;
+    border-radius: 10px;
   }
 
   .article-header h1 {
-    font-size: clamp(2rem, 12vw, 3.5rem);
+    font-size: clamp(1.9rem, 10vw, 3rem);
   }
 
   .article-header p:not(.eyebrow) {
@@ -656,6 +685,29 @@ button.pixel-button {
   .article-content ul {
     list-style-position: outside;
     padding-left: 1.2rem;
+  }
+
+  .article-content {
+    gap: 0.6rem;
+    font-size: 1.08rem;
+    line-height: 1.55;
+  }
+
+  .article-content h2 {
+    font-size: 1.35rem;
+  }
+
+  .article-content h3 {
+    font-size: 1.15rem;
+  }
+
+  .article-content pre {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .article-image figcaption {
+    font-size: 0.95rem;
   }
 
 }
@@ -670,7 +722,7 @@ button.pixel-button {
   .about-copy blockquote {
     width: min(880px, 100%);
   }
-
+  
   .about-copy h1 {
     font-size: clamp(6rem, 6vw, 8rem);
   }

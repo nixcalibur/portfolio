@@ -6,7 +6,8 @@ import HomePage from './components/pages/HomePage.jsx';
 import AboutPage from './components/pages/AboutPage.jsx';
 import BlogPage from './components/pages/BlogPage.jsx';
 import PostPage from './components/pages/PostPage.jsx';
-import { projects, posts, skills, socials } from './data/content.js';
+import { projects, posts as localPosts, skills, socials } from './data/content.js';
+import { fetchSanityPosts, isSanityConfigured } from './lib/sanity.js';
 
 function routeFromPath(pathname) {
   const parts = pathname.split('/').filter(Boolean);
@@ -17,14 +18,22 @@ function routeFromPath(pathname) {
 }
 
 function postPath(post) {
-  const datePath = post.date.replaceAll('-', '');
-  return `/blog/${datePath}/${post.slug}`;
+  if (!post.date) return `/blog/${post.slug}`;
+
+  return `/blog/${post.date.replaceAll('-', '')}/${post.slug}`;
+}
+
+function postRouteId(post) {
+  if (!post.date) return post.slug;
+
+  return `${post.date.replaceAll('-', '')}/${post.slug}`;
 }
 
 export default function App() {
   const initialRoute = routeFromPath(window.location.pathname);
   const [page, setPageState] = useState(initialRoute.page);
   const [activePost, setActivePost] = useState(initialRoute.activePost);
+  const [posts, setPosts] = useState(localPosts);
 
   useEffect(() => {
     const onPopState = () => {
@@ -37,6 +46,26 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
+  useEffect(() => {
+    if (!isSanityConfigured) return;
+
+    let isMounted = true;
+
+    fetchSanityPosts()
+      .then((nextPosts) => {
+        if (isMounted && nextPosts.length > 0) {
+          setPosts(nextPosts);
+        }
+      })
+      .catch((error) => {
+        console.error('Failed to load Sanity posts, using local fallback.', error);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const setPage = (nextPage) => {
     setPageState(nextPage);
     setActivePost(null);
@@ -45,13 +74,13 @@ export default function App() {
   };
 
   const openPost = (post) => {
-    setActivePost(`${post.date.replaceAll('-', '')}/${post.slug}`);
+    setActivePost(postRouteId(post));
     setPageState('post');
     window.history.pushState(null, '', postPath(post));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const currentPost = posts.find((post) => `${post.date.replaceAll('-', '')}/${post.slug}` === activePost);
+  const currentPost = posts.find((post) => postRouteId(post) === activePost);
 
   return (
     <>
